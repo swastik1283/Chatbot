@@ -26,12 +26,12 @@
     }
 
     .sent {
-      background-color: #dcf8c6;
+      background-color: #1d97c7;
       align-self: flex-end;
     }
 
     .received {
-      background-color: #f1f0f0;
+      background-color: #35dbd6;
       align-self: flex-start;
     }
 
@@ -68,6 +68,11 @@
 <div class="chat-container">
   <div class="card flex-grow-1">
     <div class="card-header bg-primary text-white">Chat</div>
+    {% if user.is_authenticated%}
+    <p class="card-header bg-primary text-white"><b>Welcome,{{user.username}}</b><a style="color:white" href="login">Logout</a></p>
+    {% else %}
+    <div class="card-header bg-primary text-white"><a style="color:white" href="login">Log In</a><a style="color:white" href="register">Register</a></div>
+    {%endif%}
     <div class="card-body messages-box">
       
       <ul class="list-unstyled messages-list">
@@ -78,7 +83,7 @@
               <b>AI Chatbot</b>
             </div>
             <div class="message-content">
-              Hi, I am your AI Chatbot, you can ask me anything.
+              Hi,{{user.username}} I am your AI Chatbot, you can ask me anything.
             </div>
           </div>
         </li>
